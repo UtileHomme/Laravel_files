@@ -1,3 +1,5 @@
+<!-- This is the view for creating the post -->
+
 @extends('main')
 
 @section('title','| Create New Post')
@@ -34,8 +36,14 @@
 
       <!-- Here javascript validation starts -->
       <!-- This is the name of the route -->
+
+      <!-- This is for opening the form .. Also gives CSRF function -->
         {!! Form::open(array('route'=>'posts.store','data-parsley-validate'=>'','files'=>true)) !!}
+
+            <!-- This for a label -->
             {{Form::label('title','Title:')}}
+
+            <!-- column from table,default value,array of classes or other options -->
             {{Form::text('title',null,array('class'=>'form-control','required'=>'','maxlength'=>'255'))}}
 
             {{ Form::label('slug','Slug:')}}

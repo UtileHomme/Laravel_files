@@ -1,5 +1,7 @@
 <?php
 
+// Controller for Creating and Managing Posts
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -42,6 +44,8 @@ class PostController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+
+  // creation and showing the form
   public function create()
   {
     $categories = Category::all();
@@ -122,6 +126,8 @@ class PostController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+
+  //To Look at a particular Blog Post
   public function show($id)
   {
     $post = Post::find($id);
