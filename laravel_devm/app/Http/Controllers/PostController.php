@@ -25,6 +25,7 @@ class PostController extends Controller
 
   public function __construct()
   {
+    //only authenticated users can access the posts
     $this->middleware('auth');
   }
 
@@ -46,10 +47,13 @@ class PostController extends Controller
   */
 
   // creation and showing the form
+  // we'll then pass all this to the store function
   public function create()
   {
     $categories = Category::all();
     $tags = Tag::all();
+
+    //to show the form we call the function and redirect to the mentioned post
     return view('posts.create',compact('categories','tags'));
   }
 
@@ -79,6 +83,9 @@ class PostController extends Controller
       'body' => 'required'
     ));
 
+    //Eloquent is a way to work with the Database
+
+    // This is a new instance of the Model
     $post = new Post;
     $post->title = $request->title;
     $post->slug = $request->slug;
@@ -115,7 +122,7 @@ class PostController extends Controller
     // to make it permanent(till session expires) use 'put' instead of 'flash'
     Session::flash('success','The Blog Post was Successfully Saved!!');
 
-    //go to the show blogs page
+    //go to the posts page -- we also need to add the post id
     return redirect()->route('posts.show', $post->id);
 
   }
@@ -127,7 +134,7 @@ class PostController extends Controller
   * @return \Illuminate\Http\Response
   */
 
-  //To Look at a particular Blog Post
+  //To Look at a particular Blog Post, we need the id as well.. this is passed from
   public function show($id)
   {
     $post = Post::find($id);
@@ -140,6 +147,8 @@ class PostController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+
+  // To edit a Blog Post
   public function edit($id)
   {
     /*

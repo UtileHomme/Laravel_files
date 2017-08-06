@@ -2,13 +2,14 @@
 
 @extends('main')
 
+<!-- Give a new title  || use yield where you want this title to come -->
 @section('title','| Create New Post')
 
 @section('stylesheets')
 
   {!! Html::style('css/parsley.css') !!}
     {!! Html::style('css/select2.min.css')!!}
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=16kytntw156ucsj61z5glfyxm196ohze7xlk02nduojp5ynh"></script>
+    <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=16kytntw156ucsj61z5glfyxm196ohze7xlk02nduojp5ynh"></script>
 
     <script>
       tinymce.init(
@@ -23,13 +24,15 @@
 
         }
       );
-    </script>
+    </script> -->
 
 @endsection
 
+<!-- The content that we wish to display on this page -->
 @section('content')
 
   <div class="row">
+    <!-- To push the element by 2 columns use col-md-offset-2 -->
     <div class="col-md-8 col-md-offset-2">
       <h1>Create New Post</h1>
       <hr>
@@ -38,6 +41,7 @@
       <!-- This is the name of the route -->
 
       <!-- This is for opening the form .. Also gives CSRF function -->
+      <!-- Take this form to store function of Post Controller  -->
         {!! Form::open(array('route'=>'posts.store','data-parsley-validate'=>'','files'=>true)) !!}
 
             <!-- This for a label -->

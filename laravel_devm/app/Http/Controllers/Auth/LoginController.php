@@ -25,6 +25,8 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    //  where to redirect user after login
     protected $redirectTo = '/';
 
     /**
@@ -41,6 +43,9 @@ class LoginController extends Controller
        We don't wish to apply any middleware for logout
        */
 
+      //  auth is for checking that only people logged in are allowed to access those pages
+
+      //we don't want guests going to logout page
         $this->middleware('guest')->except('logout');
     }
 }

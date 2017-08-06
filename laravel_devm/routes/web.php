@@ -10,6 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+How to check if user is logged in
+
+Go for - Auth::check()
+
+How to check if user is logged out
+
+Go for - Auth::guest()
+
+How to access the user's details from the database
+
+Go for - Auth::user()
+
+How to access the id number in the database
+
+Go for - Auth::id()
+
+How to try and login a person manually
+
+public function attempt(array $credentials = [], $remember = false , $login = true);
+*/
+
+
 
 //This is the for contact page
 // Route::get('contact', function () {
@@ -45,12 +68,22 @@ Route::get('blog/{slug}',['as'=>'blog.single', 'uses'=>'BlogController@getSingle
 
 Route::get('blog', ['uses'=> 'BlogController@getIndex','as'=>'blog.index']);
 
+/* Authentication Routes start here */
 //Routes for login
+
+//Route to show the Login form
 Route::get('auth/login','Auth\LoginController@showLoginForm');
+
+//Route to actually login
 Route::post('auth/login','Auth\LoginController@login')->name('login');      //naming the route according to middleware
+
+//Route to logout
 Route::get('auth/logout','Auth\LoginController@logout')->name('logout');
 
 //Routes for Registration
+//This will show the registration form
+Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+//This will actually register the form
 Route::post('auth/register', 'Auth\RegisterController@register');
 
 // Routes for Password Reset
@@ -59,6 +92,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+/* Authentication Routes end here */
 
 //Routes for Categories
 Route::resource('categories','CategoryController',['except'=>'create']);

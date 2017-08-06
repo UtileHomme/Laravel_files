@@ -12,7 +12,7 @@
 
 
   <div class="container">
-
+        <!-- Here we have all the messages -->
     @include('partials/_messages')
 
     <!-- put the content section here from welcome.blade.php -->

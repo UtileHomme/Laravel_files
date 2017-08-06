@@ -6,7 +6,7 @@
 
 {!! Html::style('css/select2.min.css')!!}
 
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=16kytntw156ucsj61z5glfyxm196ohze7xlk02nduojp5ynh"></script>
+<!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=16kytntw156ucsj61z5glfyxm196ohze7xlk02nduojp5ynh"></script>
 
 <script>
   tinymce.init(
@@ -21,7 +21,7 @@
 
     }
   );
-</script>
+</script> -->
 
 @endsection
 
@@ -30,6 +30,9 @@
 <div class="row">
 
   <!-- This post is a model object -->
+  <!-- We send the editted data to the PostController update function using this form  -->
+  <!-- We are connecting the form to a model -->
+  <!-- We have to manually tell the form which method to use since by default a POST request is going -->
   {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method'=>'PUT']) !!}
 
   <div class="col-md-8">
@@ -37,6 +40,7 @@
     {{ Form::label('title','Title:')}}
 
     <!-- This 'title' should match with the one in the database -->
+    <!-- input-lg makes the form a larger field -->
     {{ Form::text('title', null, ['class' => 'form-control input-lg'])}}
 
     {{ Form::label('slug','Slug:',['class'=>'form-spacing-top'])}}
@@ -48,6 +52,7 @@
     {{ Form::label('tags','Tags:', ['class' => 'form-spacing-top'])}}
     {{ Form::select('tags[]', $tags, null, ['class'=>'form-control select2-multi', 'multiple' => 'multiple'])}}
 
+    <!-- form-spacing-top will give some spacing above the element -->
     {{ Form::label('body','Body:',['class' =>'form-spacing-top'])}}
 
     {{ Form::textarea('body', null, ['class' => 'form-control'])}}

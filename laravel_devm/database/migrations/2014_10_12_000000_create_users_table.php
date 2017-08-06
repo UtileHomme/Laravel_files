@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+
+            //a token stored into database when we click Remember me
             $table->rememberToken();
             $table->timestamps();
         });
@@ -30,7 +32,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
 
-     //this is 
+     //this is
     public function down()
     {
         Schema::dropIfExists('users');

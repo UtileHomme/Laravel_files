@@ -6,6 +6,7 @@
 
 <div class="row">
   <div class="col-md-8">
+    <!-- Showing the title and the body of the post -->
     <h1>{{ $post->title}}</h1>
     <p class="lead">{!! $post->body !!}</p>
 

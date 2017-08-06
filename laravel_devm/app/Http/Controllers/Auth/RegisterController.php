@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+//same as AuthController in laravel 5.2
 class RegisterController extends Controller
 {
     /*
@@ -27,6 +28,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
+
+     //where to redirect user after registration
     protected $redirectTo = '/';
 
     /**
@@ -34,6 +37,9 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+     //everytime we instantiate the class, this will run
+     //guest middleware is the authentication middleware
     public function __construct()
     {
         $this->middleware('guest');
@@ -45,6 +51,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+     //this is for validation of the registration form
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -60,6 +68,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
+
+     //this is where the actual creation of the user takes place
     protected function create(array $data)
     {
         return User::create([

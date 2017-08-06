@@ -20,6 +20,7 @@
         <li class="{{ Request::is('contact') ? 'active':' ' }}"><a href="/contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <!-- Check if the user is logged in -->
         @if(Auth::check())
         <li class="dropdown">
 
@@ -34,6 +35,7 @@
           </ul>
         </li>
 
+        <!-- If not logged in show this -->
         @else
 
           <a href="{{ route('login') }}" class="btn btn-default"> Login </a>

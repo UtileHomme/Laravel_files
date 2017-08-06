@@ -7,6 +7,7 @@ use App\Post;
 
 class BlogController extends Controller
 {
+  //this page is accessible to the public
     public function getSingle($slug)
     {
       /*
