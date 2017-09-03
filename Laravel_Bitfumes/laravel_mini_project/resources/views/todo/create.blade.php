@@ -14,6 +14,7 @@
         <fieldset>
             <div class="form-group">
                 <div class="col-lg-10">
+                    <!-- we want to retrieve the default values of the title that is clicked, therefore we are using "yield" -->
                     <input type="text" name="title" class="form-control" value="@yield('editTitle')" placeholder="Title" />
                 </div>
                 <br />
