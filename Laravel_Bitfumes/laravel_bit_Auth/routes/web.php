@@ -24,6 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route for showing the admin's dashboard after login
 Route::get('admin/home','AdminController@index');
 
+//Route for showing the editor's dashboard after login
+Route::get('admin/editor','EditorController@index');
+
+Route::get('admin/test','EditorController@test');
+
 Route::get('admin','Admin\LoginController@showLoginForm')->name('admin.login');
 
 Route::POST('admin','Admin\LoginController@login');
@@ -33,4 +38,5 @@ Route::GET('admin-password/reset','Admin\ForgotPasswordController@showLinkReques
 Route::POST('admin-password/reset','Admin\ResetPasswordController@reset');
 Route::GET('admin-password/reset/{token}','Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
-Route::GET('admin-register','Admin\RegisterController@showRegistrationForm')->name('admin.register');
+Route::GET('admin-register','CRegisterController@showRegistrationForm')->name('admin.register');
+Route::POST('admin-register','CRegisterController@register')->name('admin.registered');

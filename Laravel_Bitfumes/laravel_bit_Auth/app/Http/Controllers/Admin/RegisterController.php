@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use App\Admin;
 
 class RegisterController extends Controller
 {
@@ -22,20 +26,28 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
+     public function showRegistrationForm()
+    {
+        return view('admin.register');
+    }
+
+
+
+
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'admin/home';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-
-
     public function __construct()
     {
         $this->middleware('guest:admin');
@@ -51,8 +63,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:admins',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -61,15 +72,21 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return Admin
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Admin::create([
             'name' => $data['name'],
-            'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
     }
+
+     protected function guard()
+    {
+        return Auth::guard('admin');
+    }
+
 }

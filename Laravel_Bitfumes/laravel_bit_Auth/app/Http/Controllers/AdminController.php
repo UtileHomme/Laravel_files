@@ -15,6 +15,7 @@ class AdminController extends Controller
     {
         //to make the authentication work for admin do this
         $this->middleware('auth:admin');
+        $this->middleware('admin');
     }
 
     /**
