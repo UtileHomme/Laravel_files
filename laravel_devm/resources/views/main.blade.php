@@ -1,3 +1,5 @@
+<!-- This page contains all the partials and generic code being used in multiple websites -->
+
 <!DOCTYPE html>
 <html lang="en">
 

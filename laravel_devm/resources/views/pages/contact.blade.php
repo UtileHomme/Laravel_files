@@ -1,3 +1,5 @@
+<!-- This is for showing the contact form and sending an email -->
+
 @extends('main')
 
 @section('title','| Contact')

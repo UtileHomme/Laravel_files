@@ -1,7 +1,7 @@
 <?php
 
-//namespaces are like little containers
-//they say we belong in this folder and we cannot leave this folder
+// namespaces are like little containers
+// they say we belong in this folder and we cannot leave this folder
 
 namespace App\Http\Controllers;
 use App\Post;

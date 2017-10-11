@@ -1,3 +1,5 @@
+<!-- This is the page the user sees when he first opens the website -->
+
 @extends('main')
 
 @section('title','| HomePage')
