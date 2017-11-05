@@ -26,7 +26,7 @@ class PostController extends Controller
   public function __construct()
   {
     //only authenticated users can access the posts
-    $this->middleware('auth');
+    // $this->middleware('auth');
   }
 
   public function index()
@@ -68,7 +68,7 @@ class PostController extends Controller
   //this needs to be a POST request
   public function store(Request $request)
   {
-    /** first validate the data
+    /* first validate the data
     then store in the database
     then redirect it to some other page
     */
@@ -80,7 +80,7 @@ class PostController extends Controller
     array(
       'title' => 'required|max:255',
       'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-      'category_id' => 'required|integer',
+    //   'category_id' => 'required|integer',
       'body' => 'required'
     ));
 
