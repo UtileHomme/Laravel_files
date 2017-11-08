@@ -14,8 +14,9 @@ class BlogController extends Controller
         Fetch from the Db based on slug
         return the view and pass the post object
       */
-
+    //   dd($slug);
       $post = Post::where('slug','=',$slug)->first();
+    //   dd($post);
       return view('blogs.single',compact('post'));
     }
 

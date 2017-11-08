@@ -196,6 +196,7 @@ class PostController extends Controller
     */
 
     $post = Post::find($id);
+    //if we are not editing the slug and we want it to stay the same
     if($request->input('slug') == $post->slug)
     {
       $this->validate($request,

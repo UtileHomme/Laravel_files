@@ -18,7 +18,7 @@ class AddSlugToUsers extends Migration
           $table->string('slug')->unique()->after('body');
 
           //Another way of making many indexes
-          // $table->index(['slug,title']);
+        //   $table->index(['slug','title']);
         });
     }
 
