@@ -14,7 +14,7 @@
         {{ Form::label('email', 'Email:') }}
         {{ Form::email('email',null,['class'=>'form-control']) }}
 
-        <!-- Password only accepts to parameters -->
+        <!-- Password only accepts two parameters -->
         {{ Form::label('password', "Password:")}}
         {{ Form::password('password', ['class' => 'form-control']) }}
 

@@ -26,7 +26,7 @@ class PostController extends Controller
   public function __construct()
   {
     //only authenticated users can access the posts
-    // $this->middleware('auth');
+    $this->middleware('auth');
   }
 
   public function index()

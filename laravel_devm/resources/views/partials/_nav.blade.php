@@ -38,7 +38,7 @@
         <!-- If not logged in show this -->
         @else
 
-          <a href="{{ route('login') }}" class="btn btn-default"> Login </a>
+          <li><a href="{{ route('login') }}" > Login </a></li>
 
           @endif
       </ul>
