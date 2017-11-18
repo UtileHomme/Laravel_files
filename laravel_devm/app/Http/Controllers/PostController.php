@@ -80,7 +80,7 @@ class PostController extends Controller
     array(
       'title' => 'required|max:255',
       'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-    //   'category_id' => 'required|integer',
+      'category_id' => 'required|integer',
       'body' => 'required'
     ));
 
@@ -167,6 +167,7 @@ class PostController extends Controller
       $cats[$category->id] = $category->name;
     }
 
+    // dd($cats);
     $tags = Tag::all();
     $tags2 = array();
     foreach($tags as $tag)
