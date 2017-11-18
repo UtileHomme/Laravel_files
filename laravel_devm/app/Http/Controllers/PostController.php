@@ -112,6 +112,8 @@ class PostController extends Controller
     $post->save();
 
     // This is for sending the data of tags to db
+    //this is for creating the many to many relationship
+    //second parameter is to not allow laravel to override the associations which have been set with posts
     $post->tags()->sync($request->tags,false);
 
     // if($post->isDirty('title'))
