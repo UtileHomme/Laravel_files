@@ -14,6 +14,7 @@ use DB;
 use App\Tag;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -81,7 +82,8 @@ class PostController extends Controller
       'title' => 'required|max:255',
       'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
       'category_id' => 'required|integer',
-      'body' => 'required'
+      'body' => 'required',
+      'featured_image' => 'sometimes|image'
     ));
 
     //Eloquent is a way to work with the Database
@@ -93,6 +95,7 @@ class PostController extends Controller
     $post->category_id = $request->category_id;
     $post->body = Purifier::clean($request->body);
 
+// dd($request->file('featured_image'));
     /*
       Image gets saved at a particular location and db tells where
     */
@@ -101,8 +104,11 @@ class PostController extends Controller
       $image = $request->file('featured_image');
 
       //this will get the file extension
-      //to rename the file use $image->encode('.png')
+      //to rename the file and let them be of the same extension use $image->encode('.png')
       $filename = time().'.'.$image->getClientOriginalExtension();
+
+    //   dd($filename);
+    //storage_path
       $location = public_path('images/'.$filename);
       Image::make($image)->resize(800,400)->save($location);
 
@@ -141,6 +147,7 @@ class PostController extends Controller
   public function show($id)
   {
     $post = Post::find($id);
+    // dd($post);
     return view('posts.show',compact('post'));
   }
 
@@ -200,25 +207,15 @@ class PostController extends Controller
 
     $post = Post::find($id);
     //if we are not editing the slug and we want it to stay the same
-    if($request->input('slug') == $post->slug)
-    {
+
       $this->validate($request,
       array(
         'title' => 'required|max:255',
+        'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug, $id",
         'category_id' => 'required|integer',
-        'body' => 'required'
+        'body' => 'required',
+        'featured_image' => 'image'
       ));
-    }
-    else
-    {
-      $this->validate($request,
-      array(
-        'title' => 'required|max:255',
-        'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-        'category_id' => 'required|integer',
-        'body' => 'required'
-      ));
-    }
 
     $user = new User;
 
@@ -229,6 +226,30 @@ class PostController extends Controller
     $post->slug = $request->input('slug');
     $post->category_id = $request->input('category_id');
     $post->body = Purifier::clean($request->input('body'));
+
+    if($request->hasFile('featured_image'))
+    {
+        //add the new photo
+        //add to database
+        //delete the previous photo
+
+        $image = $request->file('featured_image');
+
+        //this will get the file extension
+        //to rename the file and let them be of the same extension use $image->encode('.png')
+        $filename = time().'.'.$image->getClientOriginalExtension();
+
+      //   dd($filename);
+      //storage_path
+        $location = public_path('images/'.$filename);
+        Image::make($image)->resize(800,400)->save($location);
+
+        $old_filename = $post->image;
+
+        $post->image = $filename;
+
+        Storage::delete($old_filename);
+    }
 
     $post->save();
 
@@ -257,6 +278,9 @@ class PostController extends Controller
   {
     $post = Post::find($id);
     $post->tags()->detach();
+
+    //deleting the image for the post to clean up the storage space
+    Storage::delete($post->image);
 
     $post->delete();
 

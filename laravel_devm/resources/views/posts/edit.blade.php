@@ -33,7 +33,7 @@
   <!-- We send the editted data to the PostController update function using this form  -->
   <!-- We are connecting the form to a model -->
   <!-- We have to manually tell the form which method to use since by default a POST request is going -->
-  {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method'=>'PUT']) !!}
+  {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method'=>'PUT', 'files'=>true]) !!}
 
   <div class="col-md-8">
 
@@ -51,6 +51,9 @@
 
     {{ Form::label('tags','Tags:', ['class' => 'form-spacing-top'])}}
     {{ Form::select('tags[]', $tags, null, ['class'=>'form-control select2-multi', 'multiple' => 'multiple'])}}
+
+    {{ Form::label('featured_image', 'Update Featured Image:', ['class' => 'form-spacing-top'])}}
+    {{ Form::file('featured_image')}}
 
     <!-- form-spacing-top will give some spacing above the element -->
     {{ Form::label('body','Body:',['class' =>'form-spacing-top'])}}
