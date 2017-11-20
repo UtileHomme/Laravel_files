@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Auth;
 use Session;
 use App\Category;
 use App\Log;
@@ -55,6 +56,7 @@ class PostController extends Controller
     $categories = Category::all();
     $tags = Tag::all();
 
+
     //to show the form we call the function and redirect to the mentioned post
     return view('posts.create',compact('categories','tags'));
   }
@@ -76,6 +78,10 @@ class PostController extends Controller
 
     // Good for debugging
     // dd($request);
+    // 
+    // $data = Auth::id();
+    // dd($data);
+
 
     $this->validate($request,
     array(
