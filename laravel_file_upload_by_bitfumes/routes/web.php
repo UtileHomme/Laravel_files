@@ -23,3 +23,6 @@ Route::get('create','uploadController@create');
 
 Route::get('file','FileController@showUploadForm')->name('upload.file');
 Route::post('file','FileController@storeFile')->name('upload.files');
+
+Route::get('multifile','FileController@MutipleUpload')->name('multipleupload.file');
+Route::post('multifile','FileController@storeMultiFile')->name('multipleupload.file');

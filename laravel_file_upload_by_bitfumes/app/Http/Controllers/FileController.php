@@ -40,4 +40,44 @@ class FileController extends Controller
             return view('jatin',compact('filename'));
         }
     }
+
+    public function MutipleUpload()
+    {
+        return view('multiple_upload');
+    }
+
+    public function storeMultiFile(Request $request)
+    {
+        if($request->hasFile('file'))
+        {
+            //gives the path for the file
+            // $request->file->store('public/upload');
+
+            //gives the name of the file along with extension
+            // dd($request->file->getClientOriginalName());
+
+            foreach($request->file as $file)
+            {
+                $filename = $file->getClientOriginalName();
+
+                $filesize = $file->getClientSize();
+
+                $file->storeAs('public/upload',$filename);
+
+                $filename = "jatin.jpg";
+
+                $image = new Found;
+                $image->name = $filename;
+                $image->size =$filesize;
+
+                $image->save();
+
+            }
+
+
+            // dd($filename);
+        }
+        return view('jatin',compact('filename'));
+
+    }
 }
