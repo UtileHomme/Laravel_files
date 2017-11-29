@@ -11,18 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('user/blog');
+// User routes
+
+//since they belong inside the app/User folder
+Route::group(['namespace' => 'User'], function()
+{
+
+Route::get('/','HomeController@index');
+
+Route::get('post','PostController@index')->name('post');
 });
 
-Route::get('post',function()
+Route::group(['namespace' => 'Admin'], function()
 {
-    return view('user/post');
-}
-)->name('post');
 
-Route::get('admin/home',function()
-{
-    return view('admin.home');
-}
-)->name('post');
+Route::get('admin/home','HomeController@home')->name('admin.home');
+Route::resource('admin/user','UserController');
+Route::resource('admin/post','PostController');
+Route::resource('admin/tag','TagController');
+Route::resource('admin/category','CategoryController');
+});

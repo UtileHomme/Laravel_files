@@ -3,7 +3,7 @@
 
   <head>
 
-    @include('user/layout/head');
+    @include('user/layout/head')
   </head>
 
   <body>
