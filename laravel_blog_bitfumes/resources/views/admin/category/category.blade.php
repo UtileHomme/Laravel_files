@@ -28,8 +28,13 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form">
+
+
+                    <form role="form" action="{{ route('category.store')}}" method="POST">
+                        {{ csrf_field()}}
                         <div class="box-body">
+
+                            @include('include/messages')
 
                             <div class="col-lg-offset-3 col-lg-6">
                             <div class="form-group">
@@ -44,7 +49,7 @@
                             </div>
 
                             <div class="form-group">
-
+                                <a href="{{route('category.index') }}" class="btn btn-warning">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>

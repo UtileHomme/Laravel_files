@@ -26,6 +26,9 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Titles</h3>
                     </div>
+
+                    @include('include/messages')
+
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="{{ route('post.store') }}" method="POST">
@@ -86,6 +89,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
+                            <a href="{{route('post.index') }}" class="btn btn-warning">Back</a>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
