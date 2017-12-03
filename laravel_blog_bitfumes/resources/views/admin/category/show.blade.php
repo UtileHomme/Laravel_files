@@ -66,8 +66,21 @@ Blank page
             <td>{{$category->name}}
             </td>
             <td>{{$category->slug}}</td>
-            <td> 4</td>
-            <td>X</td>
+            <td><a href="{{route('category.edit',$category->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td>
+                    <form id="delete-form-{{$category->id}}" class="" style="display:none" action="{{route('category.destroy', $category->id)}}" method="POST">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                    </form>
+                <a href="" onclick="
+                if(confirm('Are you sure, You want to Delete this'))
+                {
+                    event.preventDefault(); document.getElementById('delete-form-{{$category->id}}').submit();}
+                else
+                {
+                    event.preventDefault();
+                }
+                "><span class="glyphicon glyphicon-trash"></span></a></td>
           </tr>
             @endforeach
           </tbody>

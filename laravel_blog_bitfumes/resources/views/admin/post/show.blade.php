@@ -31,7 +31,7 @@ Blank page
 <div class="box-header with-border">
 <h3 class="box-title">Posts</h3>
 
-<a href=" {{ route('post.create')}}" class="btn btn-success col-lg-offset-5"> Add New Tag</a>
+<a href=" {{ route('post.create')}}" class="btn btn-success col-lg-offset-5"> Add New Post</a>
 
 <div class="box-tools pull-right">
   <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -73,8 +73,21 @@ Start creating your amazing application!
             <td>{{$post->subtitle}}</td>
             <td>{{$post->slug}}</td>
             <td>{{$post->created_at}}</td>
-            <td> 4</td>
-            <td>X</td>
+            <td><a href="{{route('post.edit',$post->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td>
+                    <form id="delete-form-{{$post->id}}" class="" style="display:none" action="{{route('post.destroy', $post->id)}}" method="POST">
+                        {{csrf_field()}}
+                        {{method_field('DELETE')}}
+                    </form>
+                <a href="" onclick="
+                if(confirm('Are you sure, You want to Delete this'))
+                {
+                    event.preventDefault(); document.getElementById('delete-form-{{$post->id}}').submit();}
+                else
+                {
+                    event.preventDefault();
+                }
+                "><span class="glyphicon glyphicon-trash"></span></a></td>
           </tr>
             @endforeach
           </tbody>
