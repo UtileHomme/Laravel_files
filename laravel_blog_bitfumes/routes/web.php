@@ -19,7 +19,7 @@ Route::group(['namespace' => 'User'], function()
 
 Route::get('/','HomeController@index');
 
-Route::get('post','PostController@index')->name('post');
+Route::get('post/{slug?}','PostController@post')->name('post');
 });
 
 Route::group(['namespace' => 'Admin'], function()

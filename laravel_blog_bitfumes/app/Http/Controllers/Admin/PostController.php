@@ -90,7 +90,7 @@ class PostController extends Controller
 
         $post = post::with('tags','categories')->where('id',$id)->first();
 
-        $post->body = strip_tags($post->body);
+        // $post->body = strip_tags($post->body);
         $tags = tag::all();
         $categories = category::all();
         return view('admin.post.edit',compact('post','tags','categories'));
@@ -113,7 +113,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
-        $request->body = strip_tags($request->body);
+        // $request->body = strip_tags($request->body);
 
         $post = post::find($id);
         $post->title = $request->title;

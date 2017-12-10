@@ -138,7 +138,7 @@
                         <!-- /.box-header -->
                         <div class="box-body pad">
                                 <textarea id="editor1" name="body"
-                                style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" value="{{$post->body}}"></textarea>
+                                style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$post->body}}</textarea>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -174,7 +174,7 @@ $(document).ready(function() {
 </script>
 
 <!-- CK Editor -->
-<script src="{{ asset('admin/bower_components/ckeditor/ckeditor.js') }}"></script>
+<script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
 <script>
   $(function () {

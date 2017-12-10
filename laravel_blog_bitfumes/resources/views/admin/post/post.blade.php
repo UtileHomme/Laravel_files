@@ -150,8 +150,7 @@ $(document).ready(function() {
 </script>
 
 <!-- CK Editor -->
-<script src="{{ asset('admin/bower_components/ckeditor/ckeditor.js') }}"></script>
-
+ <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 <script>
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
