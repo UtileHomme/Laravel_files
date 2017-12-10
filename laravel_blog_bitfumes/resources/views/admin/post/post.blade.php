@@ -1,5 +1,10 @@
 @extends('admin.layout.app')
 
+@section('headSection')
+
+<link rel="stylesheet" href="{{asset('admin/bower_components/select2/dist/css/select2.min.css')}}">
+@endsection
+
 @section('main-content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -53,18 +58,42 @@
                             </div>
 
                             <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="image">File input</label>
-                                <input type="file" id="image" name="image">
+                                <div class="form-group">
+                                    <div class="pull-left">
+                                        <label for="image">File input</label>
+                                        <input type="file" id="image" name="image">
+                                    </div>
 
-                                <p class="help-block">Example block-level help text here.</p>
-                            </div>
+                                            <div class="pull-right">
+                                            <label>Select if you wish to Publish your post</label>
+                                            <div class="checkbox text-center">
+                                                <input type="checkbox" name="status" value="1" />
+                                                </div>
+                                        </div>
+                                    </div>
 
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="status"> Publish
-                                </label>
-                            </div>
+                                    <br>
+                                <!-- for multi select -->
+                                <div class="form-group" style="margin-top:18px;">
+                                    <br>
+                                    <label >Select Tags</label>
+                                    <select name="tags[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        @foreach($tags as $tag)
+                                        <option value="{{ $tag->id}}"> {{$tag->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group" style="margin-top:18px;">
+                                    <label >Select Category</label>
+                                    <select name="categories[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id}}"> {{$category->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -104,5 +133,20 @@
     </section>
     <!-- /.content -->
 </div>
+
+@endsection
+
+@section('footerSection')
+
+<script type="text/javascript" src="{{ asset('admin/bower_components/select2/dist/js/select2.full.min.js')}}">
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('.select2').select2()
+});
+</script>
 
 @endsection
