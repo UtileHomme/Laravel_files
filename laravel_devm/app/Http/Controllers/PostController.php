@@ -39,7 +39,9 @@ class PostController extends Controller
     */
 
     // this is how we apply pagination
-    $posts = Post::orderBy('id','desc')->paginate(5);
+    // $posts = Post::orderBy('id','desc')->paginate(5);
+    $posts = DB::table('posts')->pluck('title');
+    // dd($posts);
     return view('posts.index',compact('posts'));
   }
 
@@ -78,7 +80,7 @@ class PostController extends Controller
 
     // Good for debugging
     // dd($request);
-    // 
+    //
     // $data = Auth::id();
     // dd($data);
 
