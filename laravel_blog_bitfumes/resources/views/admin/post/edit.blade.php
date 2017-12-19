@@ -35,7 +35,7 @@
 
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('post.update',$post->id) }}" method="POST">
+                    <form role="form" action="{{ route('post.update',$post->id) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field()}}
                         {{ method_field('PATCH')}}
                         <div class="box-body">
@@ -174,7 +174,7 @@ $(document).ready(function() {
 </script>
 
 <!-- CK Editor -->
-<script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+<script src="{{ asset('admin/ckeditor/ckeditor.js')}}"></script>
 
 <script>
   $(function () {
