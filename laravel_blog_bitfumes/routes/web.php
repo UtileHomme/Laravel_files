@@ -17,20 +17,28 @@
 Route::group(['namespace' => 'User'], function()
 {
 
-Route::get('/','HomeController@index');
+    Route::get('/','HomeController@index');
 
-Route::get('post/{slug?}','PostController@post')->name('post');
+    Route::get('post/{slug?}','PostController@post')->name('post');
 
-Route::get('post/tag/{tag}','HomeController@tag')->name('tag');
-Route::get('post/category/{category}','HomeController@category')->name('category');
+    Route::get('post/tag/{tag}','HomeController@tag')->name('tag');
+    Route::get('post/category/{category}','HomeController@category')->name('category');
 });
 
 Route::group(['namespace' => 'Admin'], function()
 {
 
-Route::get('admin/home','HomeController@home')->name('admin.home');
-Route::resource('admin/user','UserController');
-Route::resource('admin/post','PostController');
-Route::resource('admin/tag','TagController');
-Route::resource('admin/category','CategoryController');
+    Route::get('admin/home','HomeController@home')->name('admin.home');
+    Route::resource('admin/user','UserController');
+    Route::resource('admin/post','PostController');
+    Route::resource('admin/tag','TagController');
+    Route::resource('admin/category','CategoryController');
+
+    Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+
+    Route::post('admin-login', 'Auth\LoginController@login');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
