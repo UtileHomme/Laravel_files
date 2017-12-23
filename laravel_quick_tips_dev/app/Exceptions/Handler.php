@@ -63,7 +63,13 @@ class Handler extends ExceptionHandler
         return redirect()->guest(route('login'));
     }
 
-    protected function convertExceptionToResponse(Exception $e)
+    /**
+ * Create a Symfony response for the given exception.
+ *
+ * @param  \Exception  $e
+ * @return mixed
+ */
+protected function convertExceptionToResponse(Exception $e)
 {
     if (config('app.debug')) {
         $whoops = new \Whoops\Run;
