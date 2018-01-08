@@ -24,13 +24,13 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Titles</h3>
+                        <h3 class="box-title">Permissions</h3>
                     </div>
 
 
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('tag.store')}}" method="POST">
+                    <form role="form" action="{{ route('permission.store')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="box-body">
 
@@ -39,19 +39,15 @@
 
                             <div class="col-lg-offset-3 col-lg-6">
                             <div class="form-group">
-                                <label for="name">Tag Title</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Tag Title">
+                                <label for="name">Permission Title</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Permission">
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="slug">Tag Slug</label>
-                                <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
-                            </div>
 
                             <div class="form-group">
 
-                                <a href="{{route('tag.index') }}" class="btn btn-warning">Back</a>
+                                <a href="{{route('permission.index') }}" class="btn btn-warning">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>

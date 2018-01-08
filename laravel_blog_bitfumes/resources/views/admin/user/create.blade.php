@@ -38,57 +38,61 @@
 
 
                             <div class="col-lg-offset-3 col-lg-6">
-                            <div class="form-group">
-                                <label for="name">User Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="User Name">
+                                <div class="form-group">
+                                    <label for="name">User Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="User Name">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="email">Email id</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm_password">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                                </div>
+
+                                <div class="form-group ">
+                                    <label>Assign Roles</label>
+                                    <div class="row">
+                                        @foreach($roles as $role)
+                                        <div class="col-lg-3">
+                                            <div class="checkbox">
+                                                <label for=""><input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->name}}</label>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <a href="{{route('user.index') }}" class="btn btn-warning">Back</a>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
+                            <!-- /.box-body -->
 
 
-                            <div class="form-group">
-                                <label for="email">Email id</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="confirm_password">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="role">Assign Role</label>
-
-                                    <select class="form-control" name="role" id="">
-                                        <option value="0">Editor</option>
-                                        <option value="1">Publisher</option>
-                                        <option value="3">Writer</option>
-                                    </select>
-                            </div>
-
-                            <div class="form-group">
-
-                                <a href="{{route('user.index') }}" class="btn btn-warning">Back</a>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
+                        </form>
+                    </div>
+                    <!-- /.box -->
 
 
-                    </form>
                 </div>
-                <!-- /.box -->
-
-
+                <!-- /.col-->
             </div>
-            <!-- /.col-->
-        </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
-</div>
+            <!-- ./row -->
+        </section>
+        <!-- /.content -->
+    </div>
 
-@endsection
+    @endsection

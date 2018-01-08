@@ -29,9 +29,9 @@ Blank page
 <!-- Default box -->
 <div class="box">
 <div class="box-header with-border">
-<h3 class="box-title">Roles</h3>
+<h3 class="box-title">Permissions</h3>
 
-<a href=" {{ route('role.create')}}" class="btn btn-success col-lg-offset-5"> Add New Tag</a>
+<a href=" {{ route('permission.create')}}" class="btn btn-success col-lg-offset-5"> Add New Permission</a>
 
 <div class="box-tools pull-right">
   <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -44,7 +44,7 @@ Blank page
 <div class="box-body">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Data Table With Full Features</h3>
+          @include('include.messages')
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -52,28 +52,28 @@ Blank page
           <thead>
           <tr>
             <th>S.no</th>
-            <th>Role Name</th>
+            <th>Permission Name</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
           </thead>
           <tbody>
 
-              @foreach($roles as $role)
+              @foreach($permissions as $permission)
           <tr>
             <td>{{$loop->index+1}}</td>
-            <td>{{$role->name}}
+            <td>{{$permission->name}}
             </td>
-            <td><a href="{{route('role.edit',$role->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a href="{{route('permission.edit',$permission->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
             <td>
-                    <form id="delete-form-{{$role->id}}" class="" style="display:none" action="{{route('role.destroy', $role->id)}}" method="POST">
+                    <form id="delete-form-{{$permission->id}}" class="" style="display:none" action="{{route('permission.destroy', $permission->id)}}" method="POST">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
                     </form>
                 <a href="" onclick="
                 if(confirm('Are you sure, You want to Delete this'))
                 {
-                    event.preventDefault(); document.getElementById('delete-form-{{$role->id}}').submit();}
+                    event.preventDefault(); document.getElementById('delete-form-{{$permission->id}}').submit();}
                 else
                 {
                     event.preventDefault();
@@ -84,7 +84,7 @@ Blank page
           </tbody>
           <tfoot>
               <th>S.no</th>
-              <th>Role Name</th>
+              <th>Permission Name</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
