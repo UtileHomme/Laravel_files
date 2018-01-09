@@ -53,6 +53,7 @@ Blank page
           <tr>
             <th>S.no</th>
             <th>Permission Name</th>
+            <th>Permission For</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -63,6 +64,8 @@ Blank page
           <tr>
             <td>{{$loop->index+1}}</td>
             <td>{{$permission->name}}
+            </td>
+            <td>{{$permission->for}}
             </td>
             <td><a href="{{route('permission.edit',$permission->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
             <td>
@@ -85,6 +88,7 @@ Blank page
           <tfoot>
               <th>S.no</th>
               <th>Permission Name</th>
+              <th>Permission For</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>

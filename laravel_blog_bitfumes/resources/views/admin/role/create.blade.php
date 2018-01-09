@@ -43,7 +43,42 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Role">
                             </div>
 
+                            <div class="row">
 
+                            <div class="col-lg-4">
+                                <label for="">Posts Permissions</label>
+                                @foreach($permissions as $permission)
+
+                                    @if($permission->for=='post')
+                                <div class="checkbox">
+                                    <label for=""><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="">User Permissions</label>
+                                @foreach($permissions as $permission)
+
+                                    @if($permission->for=='user')
+                                <div class="checkbox">
+                                    <label for=""><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="">Other Permissions</label>
+                                @foreach($permissions as $permission)
+
+                                    @if($permission->for=='other')
+                                <div class="checkbox">
+                                    <label for=""><input type="checkbox" name="permission[]" value="{{$permission->id}}">{{$permission->name}}</label>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+                        </div>
 
                             <div class="form-group">
 

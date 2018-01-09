@@ -43,6 +43,16 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Permission">
                             </div>
 
+                            <div class="form-group">
+                              <label for="">Permission For</label>
+                              <select class="" name="for" id="for" class="form-control">
+                                  <option value="" selected disable> Select Permission for</option>
+                                  <option value="user">User</option>
+                                  <option value="post">Post</option>
+                                  <option value="other">Other</option>
+                              </select>
+                            </div>
+
 
 
                             <div class="form-group">

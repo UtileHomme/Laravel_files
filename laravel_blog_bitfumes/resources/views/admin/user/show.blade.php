@@ -30,7 +30,7 @@ Blank page
 <div class="box">
 <div class="box-header with-border">
 <h3 class="box-title">Users</h3>
-
+    @include('include.messages')
 <a href=" {{ route('user.create')}}" class="btn btn-success col-lg-offset-5"> Add New Tag</a>
 
 <div class="box-tools pull-right">
@@ -64,9 +64,9 @@ Blank page
             <td>{{$loop->index+1}}</td>
             <td>{{$user->name}}
             </td>
-            <td><a href="{{route('tag.edit',$user->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a href="{{route('user.edit',$user->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
             <td>
-                    <form id="delete-form-{{$user->id}}" class="" style="display:none" action="{{route('tag.destroy', $user->id)}}" method="POST">
+                    <form id="delete-form-{{$user->id}}" class="" style="display:none" action="{{route('user.destroy', $user->id)}}" method="POST">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
                     </form>

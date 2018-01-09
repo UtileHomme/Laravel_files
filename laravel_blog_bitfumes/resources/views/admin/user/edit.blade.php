@@ -24,14 +24,15 @@
 
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Admin</h3>
+                        <h3 class="box-title">Update Admin</h3>
                     </div>
 
 
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" action="{{ route('user.store')}}" method="POST">
+                    <form role="form" action="{{ route('user.update',$user->id)}}" method="POST">
                         {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
                         <div class="box-body">
 
                             @include('include/messages')
@@ -40,28 +41,23 @@
                             <div class="col-lg-offset-3 col-lg-6">
                                 <div class="form-group">
                                     <label for="name">User Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="User Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="User Name" value="{{$user->name}}">
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="email">Email id</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{$user->email}}">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="password_confirmation">Confirm Password</label>
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
-                                </div>
 
                                 <div class="form-group">
                                     <div class="checkbox">
-                                        <label for=""><input type="checkbox" name="status" value="1">Status</label>
+                                        <label for=""><input type="checkbox" name="status"
+                                            @if($user->status==1)
+                                            checked
+                                            @endif
+                                             value="1">Status</label>
                                     </div>
                                 </div>
 
