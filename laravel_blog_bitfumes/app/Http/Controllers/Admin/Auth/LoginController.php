@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Model\admin\admin;
 
 class LoginController extends Controller
 {
@@ -23,17 +24,17 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
+    * Where to redirect users after login.
+    *
+    * @var string
+    */
     protected $redirectTo = 'admin/home';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    * Create a new controller instance.
+    *
+    * @return void
+    */
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
@@ -58,6 +59,27 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    protected function credentials(Request $request)
+    {
+        // dd($request);
+        $admin = admin::where('email',$request->email)->first();
+        // dd($admin->status);
+
+        if(count($admin))
+        {
+            if($admin->status ==0)
+            {
+                return ['email'=>'inactive','password'=>'You are not an active person, Please contact Admin'];
+            }
+            else
+            {
+                return ['email'=>$request->email,'password'=>$request->password,'status'=>1];
+
+            }
+        }
+        return $request->only($this->username(), 'password');
     }
 
     protected function guard()

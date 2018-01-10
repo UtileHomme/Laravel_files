@@ -31,8 +31,11 @@ Blank page
 <div class="box-header with-border">
 <h3 class="box-title">Posts</h3>
 
+@can('posts.create', Auth::user())
+
 <a href=" {{ route('post.create')}}" class="btn btn-success col-lg-offset-5"> Add New Post</a>
 
+@endcan
 <div class="box-tools pull-right">
   <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
           title="Collapse">
@@ -60,8 +63,13 @@ Start creating your amazing application!
             <th>Post SubTitle</th>
             <th>Slug</th>
             <th>Created At</th>
+            @can('posts.update', Auth::user())
             <th>Edit</th>
+            @endcan
+            @can('posts.delete', Auth::user())
+
             <th>Delete</th>
+            @endcan
           </tr>
           </thead>
           <tbody>
@@ -73,8 +81,17 @@ Start creating your amazing application!
             <td>{{$post->subtitle}}</td>
             <td>{{$post->slug}}</td>
             <td>{{$post->created_at}}</td>
+
+                @can('posts.update', Auth::user())
+
+
             <td><a href="{{route('post.edit',$post->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    @endcan
+
+                    @can('posts.delete', Auth::user())
+
             <td>
+
                     <form id="delete-form-{{$post->id}}" class="" style="display:none" action="{{route('post.destroy', $post->id)}}" method="POST">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
@@ -88,6 +105,7 @@ Start creating your amazing application!
                     event.preventDefault();
                 }
                 "><span class="glyphicon glyphicon-trash"></span></a></td>
+                    @endcan
           </tr>
             @endforeach
           </tbody>
@@ -95,8 +113,13 @@ Start creating your amazing application!
               <th>S.no</th>
               <th>Post Name</th>
               <th>Slug</th>
+              @can('posts.update', Auth::user())
               <th>Edit</th>
+              @endcan
+              @can('posts.delete', Auth::user())
+
               <th>Delete</th>
+              @endcan
             </tr>
           </tfoot>
         </table>

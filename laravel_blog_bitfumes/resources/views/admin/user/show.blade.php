@@ -13,7 +13,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-Blank page
+Bitfumes Page
 <small>it all starts here</small>
 </h1>
 <ol class="breadcrumb">
@@ -53,6 +53,8 @@ Blank page
           <tr>
             <th>S.no</th>
             <th>User Name</th>
+            <th>Assigned Roles</th>
+            <th>Status</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -62,8 +64,14 @@ Blank page
               @foreach($users as $user)
           <tr>
             <td>{{$loop->index+1}}</td>
-            <td>{{$user->name}}
+            <td>{{$user->name}}</td>
+                <td>
+                @foreach($user->roles as $role)
+            {{$role->name}},
+                @endforeach
             </td>
+            <td>{{$user->status? 'Active':'Not Active'}}</td>
+
             <td><a href="{{route('user.edit',$user->id)}}"><span class="glyphicon glyphicon-edit"></span></a></td>
             <td>
                     <form id="delete-form-{{$user->id}}" class="" style="display:none" action="{{route('user.destroy', $user->id)}}" method="POST">
@@ -85,6 +93,7 @@ Blank page
           <tfoot>
               <th>S.no</th>
               <th>User Name</th>
+              <th>Assigned Roles</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>

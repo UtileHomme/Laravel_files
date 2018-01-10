@@ -68,7 +68,14 @@
                                         @foreach($roles as $role)
                                         <div class="col-lg-3">
                                             <div class="checkbox">
-                                                <label for=""><input type="checkbox" name="role[]" value="{{$role->id}}">{{$role->name}}</label>
+                                                <label for=""><input type="checkbox" name="role[]" value="{{$role->id}}"
+
+                                                    @foreach($user->roles as $user_role)
+                                                        @if($user_role->id==$role->id)
+                                                        checked
+                                                        @endif
+                                                        @endforeach
+                                                    >{{$role->name}}</label>
                                             </div>
                                         </div>
                                         @endforeach
