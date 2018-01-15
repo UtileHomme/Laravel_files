@@ -26,6 +26,12 @@ class PostController extends Controller
         return view('admin.post.show',compact('posts'));
     }
 
+    public function getAllPosts()
+    {
+        $posts = post::where('status',1)->orderBy('created_at','DESC')->paginate(5);
+
+    }
+
     /**
     * Show the form for creating a new resource.
     *
