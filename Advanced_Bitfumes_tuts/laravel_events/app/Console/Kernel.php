@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Hello2::class,
-        Commands\rename::class
+        //
     ];
 
     /**
