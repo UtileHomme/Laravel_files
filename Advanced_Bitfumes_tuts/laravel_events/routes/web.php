@@ -21,3 +21,13 @@ Route::get('event',function()
     event(new TaskEvent('Hey  how are you!'));
 }
 );
+
+Route::get('listen',function()
+{
+    return view('listenBroadcast');
+}
+);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
