@@ -12,24 +12,5 @@
 */
 
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 });
-
-Route::get('subs',function()
-{
-  if (Gate::allows('subs-only', Auth::user())) {
-    // The current user can update the post...
-
-    return view('subs');
-
-  }
-  else
-  {
-    return 'You are not a subscribler. Please subscribe first';
-  }
-}
-);
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

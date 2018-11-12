@@ -4,8 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use App\Policies\subs;
-use App\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,7 +14,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        User::class => subs::class,
     ];
 
     /**
@@ -28,26 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-
-        //when using gates
-//         Gate::define('subs-only', function ($user) {
-//           echo "hello";
-//             if($user->subs==1)
-//             {
-//                 return true;
-//             }
-//             else
-//             {
-//                 return false;
-//             }
-//
-// });
-
-    //when using policies
-
-    Gate::define('subs-only','App\Policies\subs@subs_only');
-
-    Gate::resource('subs', 'App\Policies\subs');
-
+        //
     }
 }
