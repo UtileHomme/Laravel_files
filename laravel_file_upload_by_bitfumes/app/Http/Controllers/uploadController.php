@@ -53,6 +53,8 @@ class uploadController extends Controller
 
         //after linking
         $url = Storage::url('jatin.jpg');
+
+        // dd($url);
         return "<img src=' ".$url." ' />";
 
     }

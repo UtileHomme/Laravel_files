@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use App\Notifications\taskCompleted;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,23 @@
 |
 */
 
+// Route::get('/', function () {
+
+//     // User::find(1)->notify(new taskCompleted);
+
+//         $users = User::find(1);
+//     Notification::send($users, new taskCompleted());
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
+
+    // User::find(1)->notify(new taskCompleted);
+
+    User::find(1)->notify(new taskCompleted());
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

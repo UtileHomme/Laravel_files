@@ -7,7 +7,7 @@ $factory->define(App\Model\Review::class, function (Faker $faker) {
     return [
         'product_id' => function()
         {   
-            Product::all()->random();
+            return Product::all()->random();
         },
         'customer' => $faker->name, 
         'review' => $faker->paragraph,
